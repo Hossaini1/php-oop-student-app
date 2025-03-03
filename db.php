@@ -1,6 +1,6 @@
 <?php
 
-require_once "config.php";
+require_once "./config.php";
 // require_once ist eine PHP-Funktion, die eine externe PHP-Datei in die aktuelle Datei einbindet
 
 class Db
