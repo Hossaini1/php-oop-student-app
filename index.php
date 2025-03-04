@@ -9,6 +9,10 @@ require_once("student.php");
     <p class="alert alert-info">Student deleted succesfuly!</p>
 <?php endif ?>
 
+<?php if (isset($_GET["update"]) && $_GET["update"] == "success") :?>
+    <p class="alert alert-success">Student updated successfully!</p>
+<?php endif ?>
+
 <?php
 $user = new Student;
 
@@ -31,11 +35,12 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<p class="alert alert-info">Student registred succesfuly!</p>
+<p class="alert alert-info">Added new student succesfuly!</p>
 
 <?php } ?>
 
- 
+
+
 <!-- main table -->
 
 

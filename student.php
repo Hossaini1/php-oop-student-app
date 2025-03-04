@@ -38,7 +38,7 @@ class Student
         try {
             return $stmt->execute();
         } catch (Exception $e) {
-            throw new Exception("Error database", $e->getMessage());
+            throw new Exception("Error database" . $e->getMessage());
         }
     }
 
@@ -57,5 +57,35 @@ class Student
         $stmt->bindParam(":id", $id);
        return $stmt->execute();
         
+    }
+
+
+    public function getOneUser($id){
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $stmt = DB::prepareOwn($sql);
+
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function updateData($id)
+    {
+        $sql = "UPDATE $this->table SET name=:name , field=:field , age=:age WHERE id=:id";
+        $stmt = DB::prepareOwn($sql);
+
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":age", $this->age);
+        $stmt->bindParam(":field", $this->field);
+        $stmt->bindParam(":id", $id);
+
+        try {
+
+            return $stmt->execute();
+
+        } catch (Exception $e) {
+
+            throw new Exception("Error database" . $e->getMessage());
+        }
     }
 }
